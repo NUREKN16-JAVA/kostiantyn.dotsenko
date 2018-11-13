@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     18 окт. 2018 г. 10:16:11                                                        
+
+     project    
+     description
+                   
+     Костя                                                                
+     ====================================================================== -->
+<project name="project" basedir="." default="test">
+    <description>
+            description
+    </description>
+
+    <!-- ================================= 
+          target: compile              
+         ================================= -->
+	
+	<property name="build-dir" value="${basedir}/bin" />
+	<property name="main-java-dir" value="${basedir}/src/main/java" />
+	<property name="lib-dir" value="${basedir}/lib" />
+    <property name="classes-dir" value="${build-dir}/classes"/>
+    <property name="test-java-dir" value="${basedir}/src/test/java" />
+	
+    <target name="compile" depends="init">
+        <javac srcdir="${main-java-dir}" destdir="${build-dir}">
+        </javac>
+    </target>
+	
+	<target name="clean">
+		
+		<delete dir="${build-dir}" failonerror="no"/>
+	
+	</target>
+	
+	<target name="init" depends="clean">
+	<mkdir dir="${build-dir}"/>
+    <mkdir dir="${classes-dir}"/>    
+	</target>
+
+    <target name="test-compile" depends="init">
+		 <javac srcdir="${test-java-dir}" destdir="${build-dir}">
+		 </javac>
+	</target>
+
+	<target name="test" depends="compile,test-compile">
+		 <junit>
+		 	<classpath>
+		 		<pathelement location="${build-dir}"/>
+		 	</classpath>
+		 	<formatter type="plain"/>
+		 	<batchtest>
+		 		<fileset dir="${build-dir}">
+		 			<include name="**/*Test*"/>
+		 		</fileset>
+		 	</batchtest>
+		 </junit>
+		</target>
+		 	
+</project>
