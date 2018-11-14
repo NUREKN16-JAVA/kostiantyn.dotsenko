@@ -105,10 +105,10 @@ public class User implements Serializable {
 		
 		long currentYear = currentTime.get(Calendar.YEAR);
 		long yearOfBirth = _dateOfBirth.get(Calendar.YEAR);
+		
 		long age = currentYear - yearOfBirth;
 		
 		long currentMonth = currentTime.get(Calendar.MONTH);
-		//currentMonth++;
 		long monthOfBirth = _dateOfBirth.get(Calendar.MONTH);
 		
 		if (monthOfBirth > currentMonth) {
@@ -123,6 +123,5 @@ public class User implements Serializable {
 		}
 	
 		return age;
-	
 }
 }
