@@ -39,67 +39,67 @@ public class TestUser {
 	
 	// Тест Возраста 2 - для случая, когда день рождения совпадает с текущим днём
 
-		private static final int ETALONE_AGE_2 = CURRENT_YEAR - YEAR_OF_BIRTH;
-		private static final int DAY_OF_BIRTH_2 = 13;
-		private static final int MONTH_OF_BIRTH_2 = 10;
+	private static final int ETALONE_AGE_2 = CURRENT_YEAR - YEAR_OF_BIRTH;
+	private static final int DAY_OF_BIRTH_2 = 13;
+	private static final int MONTH_OF_BIRTH_2 = 10;
 		
-		@Test
-		public void testGetAge2() {
+	@Test
+	public void testGetAge2() {
 			
-			Calendar calendar = Calendar.getInstance();
-			calendar.set(YEAR_OF_BIRTH, MONTH_OF_BIRTH_2, DAY_OF_BIRTH_2);
-			user.setDateOfBirth(calendar.getTime());
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(YEAR_OF_BIRTH, MONTH_OF_BIRTH_2, DAY_OF_BIRTH_2);
+		user.setDateOfBirth(calendar.getTime());
 			
-			assertEquals(ETALONE_AGE_2, user.getAge());
-		}
+		assertEquals(ETALONE_AGE_2, user.getAge());
+	}
 	
 	// Тест Возраста 3 - для случая, когда день рождения завтра
 
-		private static final int ETALONE_AGE_3 = CURRENT_YEAR - YEAR_OF_BIRTH - 1;
-		private static final int DAY_OF_BIRTH_3 = 14;
-		private static final int MONTH_OF_BIRTH_3 = 10;
+	private static final int ETALONE_AGE_3 = CURRENT_YEAR - YEAR_OF_BIRTH - 1;
+	private static final int DAY_OF_BIRTH_3 = 14;
+	private static final int MONTH_OF_BIRTH_3 = 10;
 				
-		@Test
-		public void testGetAge3() {
+	@Test
+	public void testGetAge3() {
 					
-			Calendar calendar = Calendar.getInstance();
-			calendar.set(YEAR_OF_BIRTH, MONTH_OF_BIRTH_3, DAY_OF_BIRTH_3);
-			user.setDateOfBirth(calendar.getTime());
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(YEAR_OF_BIRTH, MONTH_OF_BIRTH_3, DAY_OF_BIRTH_3);
+		user.setDateOfBirth(calendar.getTime());
 					
-			assertEquals(ETALONE_AGE_3, user.getAge());
-		}
+		assertEquals(ETALONE_AGE_3, user.getAge());
+	}
 		
 	// Тест Возраста 4 - для случая, когда день рождения 1-го января
 
-		private static final int ETALONE_AGE_4 = CURRENT_YEAR - YEAR_OF_BIRTH;
-		private static final int DAY_OF_BIRTH_4 = 1;
-		private static final int MONTH_OF_BIRTH_4 = 0;
+	private static final int ETALONE_AGE_4 = CURRENT_YEAR - YEAR_OF_BIRTH;
+	private static final int DAY_OF_BIRTH_4 = 1;
+	private static final int MONTH_OF_BIRTH_4 = 0;
 						
-		@Test
-		public void testGetAge4() {
+	@Test
+	public void testGetAge4() {
 							
-			Calendar calendar = Calendar.getInstance();
-			calendar.set(YEAR_OF_BIRTH, MONTH_OF_BIRTH_4, DAY_OF_BIRTH_4);
-			user.setDateOfBirth(calendar.getTime());
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(YEAR_OF_BIRTH, MONTH_OF_BIRTH_4, DAY_OF_BIRTH_4);
+		user.setDateOfBirth(calendar.getTime());
 							
-			assertEquals(ETALONE_AGE_4, user.getAge());
-		}
+		assertEquals(ETALONE_AGE_4, user.getAge());
+	}
 		
-		// Тест Возраста 5 - для случая, когда день рождения 31-го декабря
+	// Тест Возраста 5 - для случая, когда день рождения 31-го декабря
 
-				private static final int ETALONE_AGE_5 = CURRENT_YEAR - YEAR_OF_BIRTH - 1;
-				private static final int DAY_OF_BIRTH_5 = 31;
-				private static final int MONTH_OF_BIRTH_5 = 11;
+	private static final int ETALONE_AGE_5 = CURRENT_YEAR - YEAR_OF_BIRTH - 1;
+	private static final int DAY_OF_BIRTH_5 = 31;
+	private static final int MONTH_OF_BIRTH_5 = 11;
 								
-				@Test
-				public void testGetAge5() {
+	@Test
+	public void testGetAge5() {
 									
-					Calendar calendar = Calendar.getInstance();
-					calendar.set(YEAR_OF_BIRTH, MONTH_OF_BIRTH_5, DAY_OF_BIRTH_5);
-					user.setDateOfBirth(calendar.getTime());
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(YEAR_OF_BIRTH, MONTH_OF_BIRTH_5, DAY_OF_BIRTH_5);
+		user.setDateOfBirth(calendar.getTime());
 									
-					assertEquals(ETALONE_AGE_5, user.getAge());
-				}
+		assertEquals(ETALONE_AGE_5, user.getAge());
+	}
 		
 	
 		
