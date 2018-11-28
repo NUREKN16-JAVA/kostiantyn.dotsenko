@@ -19,11 +19,21 @@
 	<property name="build-dir" value="${basedir}/bin" />
 	<property name="main-java-dir" value="${basedir}/src/main/java" />
 	<property name="lib-dir" value="${basedir}/lib" />
-    <property name="classes-dir" value="${build-dir}/classes"/>
     <property name="test-java-dir" value="${basedir}/src/test/java" />
+    <property name="test-resources-dir" value="${basedir}/src/test/resources"/>   
+	<property name="main-resources-dir" value="${basedir}/src/main/resources"/>
 	
     <target name="compile" depends="init">
+    	<copy todir="${build-dir}">
+    	    	            <fileset dir="${main-resources-dir}">
+    	    	                <include name="**/*.properties"/>
+    	    	                <include name="**/*.xml"/>
+    	    	            </fileset>
+    	    	        </copy>   
         <javac srcdir="${main-java-dir}" destdir="${build-dir}">
+        	<classpath>
+        	        <fileset dir="${lib-dir}"/>
+        	</classpath>
         </javac>
     </target>
 	
@@ -34,12 +44,20 @@
 	</target>
 	
 	<target name="init" depends="clean">
-	<mkdir dir="${build-dir}"/>
-    <mkdir dir="${classes-dir}"/>    
+	<mkdir dir="${build-dir}"/>   
 	</target>
 
     <target name="test-compile" depends="init">
+    	<copy todir="${build-dir}">
+    	            <fileset dir="${test-resources-dir}">
+    	                <include name="**/*.properties"/>
+    	                <include name="**/*.xml"/>
+    	            </fileset>
+    	        </copy>      
 		 <javac srcdir="${test-java-dir}" destdir="${build-dir}">
+		 	<classpath>
+		 	       <fileset dir="${lib-dir}"/>
+		 	 </classpath>
 		 </javac>
 	</target>
 
@@ -47,6 +65,7 @@
 		 <junit>
 		 	<classpath>
 		 		<pathelement location="${build-dir}"/>
+		 		<fileset dir="${lib-dir}"/>
 		 	</classpath>
 		 	<formatter type="plain"/>
 		 	<batchtest>
