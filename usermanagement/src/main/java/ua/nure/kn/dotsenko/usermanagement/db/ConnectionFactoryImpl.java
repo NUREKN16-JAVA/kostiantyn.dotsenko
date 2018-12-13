@@ -3,6 +3,7 @@ package ua.nure.kn.dotsenko.usermanagement.db;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class ConnectionFactoryImpl implements ConnectionFactory {
 
@@ -11,15 +12,20 @@ public class ConnectionFactoryImpl implements ConnectionFactory {
 	private String user;
 	private String password;
 	
-	public ConnectionFactoryImpl() {
-		// TODO Auto-generated constructor stub
-	}
+	public ConnectionFactoryImpl() {}
 	
 	public ConnectionFactoryImpl(final String driver, final String url, final String user, final String password) {
 		this.driver = driver;
 		this.url = url;
 		this.user = user;
 		this.password = password;
+	}
+
+	public ConnectionFactoryImpl(Properties properties) {
+		String user = properties.getProperty("connection.user");
+		String password = properties.getProperty("connection.password");
+		String url = properties.getProperty("connection.url");
+		String driver = properties.getProperty("connection.driver");
 	}
 
 	@Override

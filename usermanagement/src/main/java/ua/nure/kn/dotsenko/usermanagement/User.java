@@ -11,6 +11,15 @@ public class User implements Serializable {
 	 */
 	private static final long serialVersionUID = -3278038741672885759L;
 	
+	public User(long id, String firstName, String lastName, Date dateOfBirth) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dateOfBirth = dateOfBirth;
+	}
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public String toString() {
 		return "User [firstNAme=" + firstName + ", lastName=" + lastName + ", dateOfBirth=" + dateOfBirth + ", id=" + id
