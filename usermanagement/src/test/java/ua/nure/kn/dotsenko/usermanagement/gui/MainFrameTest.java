@@ -70,10 +70,10 @@ public class MainFrameTest extends JFCTestCase {
 		find(JPanel.class, "browsePanel");
 		JTable table = (JTable) find(JTable.class, "userTable");
 		
-		//assertEquals(3, table.getColumnCount());
-		//assertEquals("id", table.getColumnName(0)); //localize
-		//assertEquals("First name", table.getColumnName(1));
-		//assertEquals("Last name", table.getColumnName(2));
+		assertEquals(3, table.getColumnCount());
+		assertEquals("id", table.getColumnName(0)); //localize
+		assertEquals("First name", table.getColumnName(1));
+		assertEquals("Last name", table.getColumnName(2));
 		
 		find(JButton.class, "addButton");
 		find(JButton.class, "editButton");

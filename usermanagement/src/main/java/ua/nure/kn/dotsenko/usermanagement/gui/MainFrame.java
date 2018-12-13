@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import ua.nure.kn.dotsenko.usermanagement.db.DaoFactory;
 import ua.nure.kn.dotsenko.usermanagement.db.UserDAO;
+import ua.nure.kn.dotsenko.usermanagement.util.Messages;
 
 public class MainFrame extends JFrame {
 
@@ -28,7 +29,7 @@ public class MainFrame extends JFrame {
 	private void initialize() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
-		this.setTitle("User management"); //localize
+		this.setTitle(Messages.getString("MainFrame.user_management")); //localize //$NON-NLS-1$
 		this.setContentPane(getContentPanel());
 	}
 
