@@ -7,10 +7,11 @@ import java.util.Collection;
 import javax.swing.table.AbstractTableModel;
 
 import ua.nure.kn.dotsenko.usermanagement.User;
+import ua.nure.kn.dotsenko.usermanagement.util.Messages;
 
 public class UserTableModel extends AbstractTableModel {
 	
-	private static final String[] COLUMN_NAME = {"id","First name","Last name"};
+	private static final String[] COLUMN_NAME = {"id",Messages.getString("UserTableModel.first_name"),Messages.getString("UserTableModel.last_name")}; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 	private static final Class[] COLUMN_CLASSES = {Long.class, String.class, String.class};
 	private List users = null;
 	

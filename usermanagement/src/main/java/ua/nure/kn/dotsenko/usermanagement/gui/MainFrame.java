@@ -56,7 +56,6 @@ public class MainFrame extends JFrame {
 
 	public void showAddPanel() {
 		showPanel(getAddPanel());
-		
 	}
 
 	private void showPanel(JPanel panel) {
@@ -70,6 +69,10 @@ public class MainFrame extends JFrame {
 			addPanel = new AddPanel(this);
 		}
 		return addPanel;
+	}
+
+	public void showBrowsePanel() {
+		showPanel(getBrowsePanel());
 	}
 
 }
