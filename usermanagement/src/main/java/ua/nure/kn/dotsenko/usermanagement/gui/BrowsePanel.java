@@ -14,6 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.Border;
 
+import ua.nure.kn.dotsenko.usermanagement.User;
 import ua.nure.kn.dotsenko.usermanagement.db.DatabaseException;
 import ua.nure.kn.dotsenko.usermanagement.util.Messages;
 
@@ -127,9 +128,9 @@ public class BrowsePanel extends JPanel implements ActionListener {
 		if("add".equalsIgnoreCase(actionCommand)) { //$NON-NLS-1$
 			this.setVisible(false);
 			parent.showAddPanel();
+			return;
 		}
 		if("edit".equalsIgnoreCase(actionCommand)) { //$NON-NLS-1$
-			
 			if(userTable.getSelectedRow() == -1) {
 				JOptionPane.showMessageDialog(this, "Select a user to update", "Error", JOptionPane.WARNING_MESSAGE);
 				return;
@@ -137,6 +138,53 @@ public class BrowsePanel extends JPanel implements ActionListener {
 			
 			this.setVisible(false);
 			parent.showEditPanel((Long) userTable.getValueAt(userTable.getSelectedRow(), 0));
+			return;
+		}
+		
+		if("delete".equalsIgnoreCase(actionCommand)) {
+			if(userTable.getSelectedRow() == -1) {
+				JOptionPane.showMessageDialog(this, "Select a user to delete", "Error", JOptionPane.WARNING_MESSAGE);
+				return;
+			}
+			
+			int answer = JOptionPane.showConfirmDialog(this, "Do you really want to delete this user?", "Deletion",
+					JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+			
+			if(answer == 0) {
+			try {
+				parent.getDao()
+						.delete(parent.getDao().find((Long) userTable.getValueAt(userTable.getSelectedRow(), 0)));
+			} catch (DatabaseException e1) {
+				e1.printStackTrace();
+			}
+			parent.showBrowsePanel();
+			}
+			
+			return;
+		}
+		
+		if("details".equalsIgnoreCase(actionCommand)) {
+			if(userTable.getSelectedRow() == -1) {
+				JOptionPane.showMessageDialog(this, "Select a user to view details", "Error", JOptionPane.WARNING_MESSAGE);
+				return;
+			}
+			User selectedUser = null;
+			try {
+				selectedUser = parent.getDao().find((Long) userTable.getValueAt(userTable.getSelectedRow(), 0));
+			} catch (DatabaseException e1) {
+				e1.printStackTrace();
+			}
+			
+			String message = 
+					"Id - " + selectedUser.getId().toString() + "\n" +
+					"Full name - " + 
+					selectedUser.getFullName() + "\n" + 
+					"Date of birth - " + 
+					selectedUser.getDateOfBirth().toString();
+
+			JOptionPane.showMessageDialog(this, message, "Details",
+					JOptionPane.INFORMATION_MESSAGE);
+			return;
 		}
 
 	}
