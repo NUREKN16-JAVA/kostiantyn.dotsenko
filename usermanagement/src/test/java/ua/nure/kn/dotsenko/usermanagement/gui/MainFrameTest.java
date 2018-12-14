@@ -100,9 +100,9 @@ public class MainFrameTest extends JFCTestCase {
 		String lastName = "Doe";
 		String firstName = "John";
 		Date now = new Date();
-		SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
+		SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
 		try {
-			now=ft.parse("2018-12-14");
+			now = ft.parse("2018-12-14");
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}

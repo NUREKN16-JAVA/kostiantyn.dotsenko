@@ -119,9 +119,11 @@ public class AddPanel extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if("ok".equalsIgnoreCase(e.getActionCommand())) { //$NON-NLS-1$
-			if(getFirstNameField().getText().isEmpty() || getLastNameField().getText().isEmpty() || getDateOfBirthField().getText().isEmpty()) {
-				JOptionPane.showMessageDialog(this, Messages.getString("AddPanel.fill_all_the_text_fields"), "Error", JOptionPane.WARNING_MESSAGE); //$NON-NLS-1$ //$NON-NLS-2$
+		if ("ok".equalsIgnoreCase(e.getActionCommand())) { //$NON-NLS-1$
+			if (getFirstNameField().getText().isEmpty() || getLastNameField().getText().isEmpty()
+					|| getDateOfBirthField().getText().isEmpty()) {
+				JOptionPane.showMessageDialog(this, Messages.getString("AddPanel.fill_all_the_text_fields"), "Error", //$NON-NLS-1$ //$NON-NLS-2$
+						JOptionPane.WARNING_MESSAGE);
 				return;
 			}
 			User user = new User();

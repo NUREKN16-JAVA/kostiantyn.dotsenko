@@ -125,47 +125,51 @@ public class BrowsePanel extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String actionCommand = e.getActionCommand();
-		if("add".equalsIgnoreCase(actionCommand)) { //$NON-NLS-1$
+		if ("add".equalsIgnoreCase(actionCommand)) { //$NON-NLS-1$
 			this.setVisible(false);
 			parent.showAddPanel();
 			return;
 		}
-		if("edit".equalsIgnoreCase(actionCommand)) { //$NON-NLS-1$
-			if(userTable.getSelectedRow() == -1) {
-				JOptionPane.showMessageDialog(this, Messages.getString("BrowsePanel.select_user_to_update"), "Error", JOptionPane.WARNING_MESSAGE); //$NON-NLS-1$ //$NON-NLS-2$
+		if ("edit".equalsIgnoreCase(actionCommand)) { //$NON-NLS-1$
+			if (userTable.getSelectedRow() == -1) {
+				JOptionPane.showMessageDialog(this, Messages.getString("BrowsePanel.select_user_to_update"), "Error", //$NON-NLS-1$ //$NON-NLS-2$
+						JOptionPane.WARNING_MESSAGE);
 				return;
 			}
-			
+
 			this.setVisible(false);
 			parent.showEditPanel((Long) userTable.getValueAt(userTable.getSelectedRow(), 0));
 			return;
 		}
-		
-		if("delete".equalsIgnoreCase(actionCommand)) { //$NON-NLS-1$
-			if(userTable.getSelectedRow() == -1) {
-				JOptionPane.showMessageDialog(this, Messages.getString("BrowsePanel.user_to_delete"), "Error", JOptionPane.WARNING_MESSAGE); //$NON-NLS-1$ //$NON-NLS-2$
+
+		if ("delete".equalsIgnoreCase(actionCommand)) { //$NON-NLS-1$
+			if (userTable.getSelectedRow() == -1) {
+				JOptionPane.showMessageDialog(this, Messages.getString("BrowsePanel.user_to_delete"), "Error", //$NON-NLS-1$ //$NON-NLS-2$
+						JOptionPane.WARNING_MESSAGE);
 				return;
 			}
-			
-			int answer = JOptionPane.showConfirmDialog(this, Messages.getString("BrowsePanel.question_deletion"), Messages.getString("BrowsePanel.deletion"), //$NON-NLS-1$ //$NON-NLS-2$
+
+			int answer = JOptionPane.showConfirmDialog(this, Messages.getString("BrowsePanel.question_deletion"), //$NON-NLS-1$
+					Messages.getString("BrowsePanel.deletion"), //$NON-NLS-1$
 					JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
-			
-			if(answer == 0) {
-			try {
-				parent.getDao()
-						.delete(parent.getDao().find((Long) userTable.getValueAt(userTable.getSelectedRow(), 0)));
-			} catch (DatabaseException e1) {
-				e1.printStackTrace();
+
+			if (answer == 0) {
+				try {
+					parent.getDao()
+							.delete(parent.getDao().find((Long) userTable.getValueAt(userTable.getSelectedRow(), 0)));
+				} catch (DatabaseException e1) {
+					e1.printStackTrace();
+				}
+				parent.showBrowsePanel();
 			}
-			parent.showBrowsePanel();
-			}
-			
+
 			return;
 		}
-		
-		if("details".equalsIgnoreCase(actionCommand)) { //$NON-NLS-1$
-			if(userTable.getSelectedRow() == -1) {
-				JOptionPane.showMessageDialog(this, Messages.getString("BrowsePanel.select_to_view_details"), "Error", JOptionPane.WARNING_MESSAGE); //$NON-NLS-1$ //$NON-NLS-2$
+
+		if ("details".equalsIgnoreCase(actionCommand)) { //$NON-NLS-1$
+			if (userTable.getSelectedRow() == -1) {
+				JOptionPane.showMessageDialog(this, Messages.getString("BrowsePanel.select_to_view_details"), "Error", //$NON-NLS-1$ //$NON-NLS-2$
+						JOptionPane.WARNING_MESSAGE);
 				return;
 			}
 			User selectedUser = null;
@@ -174,19 +178,17 @@ public class BrowsePanel extends JPanel implements ActionListener {
 			} catch (DatabaseException e1) {
 				e1.printStackTrace();
 			}
-			
-			String message = 
-					"Id - " + selectedUser.getId().toString() + "\n" + //$NON-NLS-1$ //$NON-NLS-2$
-					Messages.getString("BrowsePanel.full_name") +  //$NON-NLS-1$
-					selectedUser.getFullName() + "\n" +  //$NON-NLS-1$
-					Messages.getString("BrowsePanel.date_of_birth") +  //$NON-NLS-1$
+
+			String message = "Id - " + selectedUser.getId().toString() + "\n" + //$NON-NLS-1$ //$NON-NLS-2$
+					Messages.getString("BrowsePanel.full_name") + //$NON-NLS-1$
+					selectedUser.getFullName() + "\n" + //$NON-NLS-1$
+					Messages.getString("BrowsePanel.date_of_birth") + //$NON-NLS-1$
 					selectedUser.getDateOfBirth().toString();
 
 			JOptionPane.showMessageDialog(this, message, Messages.getString("BrowsePanel.details"), //$NON-NLS-1$
 					JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
-
 	}
 
 }
