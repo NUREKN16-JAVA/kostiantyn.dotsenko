@@ -37,7 +37,6 @@ import ua.nure.kn.dotsenko.usermanagement.util.Messages;
 public class MainFrameTest extends JFCTestCase {
 
 	private Mock mockUserDao;
-	private List<User> users;
 	private MainFrame mainFrame; 
 
 	@Before
@@ -52,9 +51,6 @@ public class MainFrameTest extends JFCTestCase {
 		
 		mockUserDao.expectAndReturn("findAll", new ArrayList());
 		
-		//User expectedUser = new User(1000L, "George", "Bush", new Date());
-		//users = Collections.singletonList(expectedUser);
-		//mockUserDao.expectAndReturn("findAll", users);
 		setHelper(new JFCTestHelper());
 		mainFrame = new MainFrame();
 		mainFrame.setVisible(true);
