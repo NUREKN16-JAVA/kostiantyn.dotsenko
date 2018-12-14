@@ -117,7 +117,7 @@ public class BrowsePanel extends JPanel implements ActionListener {
 			model = new UserTableModel(parent.getDao().findAll());
 		} catch (DatabaseException e) {
 			model = new UserTableModel(new ArrayList());
-			JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE); //$NON-NLS-1$
 		}
 		getUserTable().setModel(model);
 	}
@@ -132,7 +132,7 @@ public class BrowsePanel extends JPanel implements ActionListener {
 		}
 		if("edit".equalsIgnoreCase(actionCommand)) { //$NON-NLS-1$
 			if(userTable.getSelectedRow() == -1) {
-				JOptionPane.showMessageDialog(this, "Select a user to update", "Error", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(this, Messages.getString("BrowsePanel.select_user_to_update"), "Error", JOptionPane.WARNING_MESSAGE); //$NON-NLS-1$ //$NON-NLS-2$
 				return;
 			}
 			
@@ -141,13 +141,13 @@ public class BrowsePanel extends JPanel implements ActionListener {
 			return;
 		}
 		
-		if("delete".equalsIgnoreCase(actionCommand)) {
+		if("delete".equalsIgnoreCase(actionCommand)) { //$NON-NLS-1$
 			if(userTable.getSelectedRow() == -1) {
-				JOptionPane.showMessageDialog(this, "Select a user to delete", "Error", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(this, Messages.getString("BrowsePanel.user_to_delete"), "Error", JOptionPane.WARNING_MESSAGE); //$NON-NLS-1$ //$NON-NLS-2$
 				return;
 			}
 			
-			int answer = JOptionPane.showConfirmDialog(this, "Do you really want to delete this user?", "Deletion",
+			int answer = JOptionPane.showConfirmDialog(this, Messages.getString("BrowsePanel.question_deletion"), Messages.getString("BrowsePanel.deletion"), //$NON-NLS-1$ //$NON-NLS-2$
 					JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
 			
 			if(answer == 0) {
@@ -163,9 +163,9 @@ public class BrowsePanel extends JPanel implements ActionListener {
 			return;
 		}
 		
-		if("details".equalsIgnoreCase(actionCommand)) {
+		if("details".equalsIgnoreCase(actionCommand)) { //$NON-NLS-1$
 			if(userTable.getSelectedRow() == -1) {
-				JOptionPane.showMessageDialog(this, "Select a user to view details", "Error", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(this, Messages.getString("BrowsePanel.select_to_view_details"), "Error", JOptionPane.WARNING_MESSAGE); //$NON-NLS-1$ //$NON-NLS-2$
 				return;
 			}
 			User selectedUser = null;
@@ -176,13 +176,13 @@ public class BrowsePanel extends JPanel implements ActionListener {
 			}
 			
 			String message = 
-					"Id - " + selectedUser.getId().toString() + "\n" +
-					"Full name - " + 
-					selectedUser.getFullName() + "\n" + 
-					"Date of birth - " + 
+					"Id - " + selectedUser.getId().toString() + "\n" + //$NON-NLS-1$ //$NON-NLS-2$
+					Messages.getString("BrowsePanel.full_name") +  //$NON-NLS-1$
+					selectedUser.getFullName() + "\n" +  //$NON-NLS-1$
+					Messages.getString("BrowsePanel.date_of_birth") +  //$NON-NLS-1$
 					selectedUser.getDateOfBirth().toString();
 
-			JOptionPane.showMessageDialog(this, message, "Details",
+			JOptionPane.showMessageDialog(this, message, Messages.getString("BrowsePanel.details"), //$NON-NLS-1$
 					JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}

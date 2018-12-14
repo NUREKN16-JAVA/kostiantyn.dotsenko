@@ -119,9 +119,9 @@ public class AddPanel extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if("ok".equalsIgnoreCase(e.getActionCommand())) {
+		if("ok".equalsIgnoreCase(e.getActionCommand())) { //$NON-NLS-1$
 			if(getFirstNameField().getText().isEmpty() || getLastNameField().getText().isEmpty() || getDateOfBirthField().getText().isEmpty()) {
-				JOptionPane.showMessageDialog(this, "Fill all the text fields", "Error", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(this, Messages.getString("AddPanel.fill_all_the_text_fields"), "Error", JOptionPane.WARNING_MESSAGE); //$NON-NLS-1$ //$NON-NLS-2$
 				return;
 			}
 			User user = new User();
@@ -137,7 +137,7 @@ public class AddPanel extends JPanel implements ActionListener {
 			try {
 				parent.getDao().create(user);
 			} catch (DatabaseException e1) {
-				JOptionPane.showMessageDialog(this, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE); //$NON-NLS-1$
 			}
 		}
 		clearFields();
@@ -146,13 +146,13 @@ public class AddPanel extends JPanel implements ActionListener {
 	}
 
 	private void clearFields() {
-		getFirstNameField().setText("");
+		getFirstNameField().setText(""); //$NON-NLS-1$
 		getFirstNameField().setBackground(bgColor);
 		
-		getLastNameField().setText("");
+		getLastNameField().setText(""); //$NON-NLS-1$
 		getLastNameField().setBackground(bgColor);
 		
-		getDateOfBirthField().setText("");
+		getDateOfBirthField().setText(""); //$NON-NLS-1$
 		getDateOfBirthField().setBackground(bgColor);
 	}
 	
