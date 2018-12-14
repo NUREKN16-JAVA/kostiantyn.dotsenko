@@ -19,7 +19,7 @@ import ua.nure.kn.dotsenko.usermanagement.User;
 import ua.nure.kn.dotsenko.usermanagement.db.DatabaseException;
 import ua.nure.kn.dotsenko.usermanagement.util.Messages;
 
-public class AddPanel extends JPanel implements ActionListener {
+public class EditPanel extends JPanel implements ActionListener {
 	
 	private MainFrame parent;
 	private JPanel buttonPanel;
@@ -30,9 +30,10 @@ public class AddPanel extends JPanel implements ActionListener {
 	private JTextField lastNameField;
 	private JTextField firstNameField;
 	private Color bgColor = Color.WHITE;
-
-	public AddPanel(MainFrame parent) {
-		
+	
+	private User user;
+	
+public EditPanel(MainFrame parent) {
 		this.parent = parent;
 		initialize();
 	}
@@ -43,7 +44,7 @@ public class AddPanel extends JPanel implements ActionListener {
 		this.add(getFieldPanel(), BorderLayout.NORTH);
 		this.add(getButtonPanel(), BorderLayout.SOUTH);
 	}
-
+	
 	private Component getButtonPanel() {
 		if(buttonPanel == null) {
 			buttonPanel = new JPanel();
@@ -74,7 +75,7 @@ public class AddPanel extends JPanel implements ActionListener {
 		}
 		return okButton;
 	}
-
+	
 	private Component getFieldPanel() {
 		if(fieldPanel == null) {
 			fieldPanel = new JPanel();
@@ -124,7 +125,6 @@ public class AddPanel extends JPanel implements ActionListener {
 				JOptionPane.showMessageDialog(this, "Fill all the text fields", "Error", JOptionPane.WARNING_MESSAGE);
 				return;
 			}
-			User user = new User();
 			user.setFirstName(getFirstNameField().getText());
 			user.setLastName(getLastNameField().getText());
 			DateFormat format = DateFormat.getDateInstance();
@@ -135,7 +135,7 @@ public class AddPanel extends JPanel implements ActionListener {
 				return;
 			}
 			try {
-				parent.getDao().create(user);
+				parent.getDao().update(user);
 			} catch (DatabaseException e1) {
 				JOptionPane.showMessageDialog(this, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 			}
@@ -156,4 +156,12 @@ public class AddPanel extends JPanel implements ActionListener {
 		getDateOfBirthField().setBackground(bgColor);
 	}
 	
+	  public void fillUserToUpdateData(User user) {
+		    this.user = user;
+	        getFirstNameField().setText(user.getFirstName());
+	        getLastNameField().setText(user.getLastName());
+	        DateFormat format = DateFormat.getDateInstance();
+	        getDateOfBirthField().setText(format.format(user.getDateOfBirth()));
+	    }
+
 }

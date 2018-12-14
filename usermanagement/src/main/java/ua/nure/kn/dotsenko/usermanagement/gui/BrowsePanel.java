@@ -128,6 +128,16 @@ public class BrowsePanel extends JPanel implements ActionListener {
 			this.setVisible(false);
 			parent.showAddPanel();
 		}
+		if("edit".equalsIgnoreCase(actionCommand)) { //$NON-NLS-1$
+			
+			if(userTable.getSelectedRow() == -1) {
+				JOptionPane.showMessageDialog(this, "Select a user to update", "Error", JOptionPane.WARNING_MESSAGE);
+				return;
+			}
+			
+			this.setVisible(false);
+			parent.showEditPanel((Long) userTable.getValueAt(userTable.getSelectedRow(), 0));
+		}
 
 	}
 

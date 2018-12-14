@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import ua.nure.kn.dotsenko.usermanagement.db.DaoFactory;
+import ua.nure.kn.dotsenko.usermanagement.db.DatabaseException;
 import ua.nure.kn.dotsenko.usermanagement.db.UserDAO;
 import ua.nure.kn.dotsenko.usermanagement.util.Messages;
 
@@ -19,6 +20,7 @@ public class MainFrame extends JFrame {
 	private JPanel contentPanel;
 	private BrowsePanel browsePanel;
 	private AddPanel addPanel;
+	private EditPanel editPanel;
 
 	public MainFrame() {
 		super();
@@ -46,22 +48,28 @@ public class MainFrame extends JFrame {
 		return contentPanel;
 	}
 
-	private JPanel getBrowsePanel() {
-		if(browsePanel == null) {
-			browsePanel = new BrowsePanel(this);
-		} 
-		browsePanel.initTable();
-		return browsePanel;
-	}
-
 	public static void main(String[] args) {
 		MainFrame frame = new MainFrame();
 		frame.setVisible(true);
 	}
 
+	public void showBrowsePanel() {
+		showPanel(getBrowsePanel());
+	}
+	
 	public void showAddPanel() {
 		showPanel(getAddPanel());
 	}
+	
+	public void showEditPanel(Long userId) {
+		showPanel(getEditPanel());
+		try {
+			editPanel.fillUserToUpdateData(dao.find(userId));
+		} catch (DatabaseException e) {
+			e.printStackTrace();
+		}
+	}
+
 
 	private void showPanel(JPanel panel) {
 		getContentPane().add(panel, BorderLayout.CENTER);
@@ -69,6 +77,14 @@ public class MainFrame extends JFrame {
 		panel.repaint();
 	}
 
+	private JPanel getBrowsePanel() {
+		if(browsePanel == null) {
+			browsePanel = new BrowsePanel(this);
+		} 
+		browsePanel.initTable();
+		return browsePanel;
+	}
+	
 	private AddPanel getAddPanel() {
 		if(addPanel == null) {
 			addPanel = new AddPanel(this);
@@ -76,8 +92,10 @@ public class MainFrame extends JFrame {
 		return addPanel;
 	}
 
-	public void showBrowsePanel() {
-		showPanel(getBrowsePanel());
+	private EditPanel getEditPanel() {
+		if(editPanel == null) {
+			editPanel = new EditPanel(this);
+		}
+		return editPanel;
 	}
-
 }
