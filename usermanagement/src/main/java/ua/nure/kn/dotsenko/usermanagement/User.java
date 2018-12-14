@@ -20,6 +20,11 @@ public class User implements Serializable {
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
+	public User(String firstName, String lastName, Date now) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dateOfBirth = now;
+	}
 	@Override
 	public String toString() {
 		return "User [firstNAme=" + firstName + ", lastName=" + lastName + ", dateOfBirth=" + dateOfBirth + ", id=" + id

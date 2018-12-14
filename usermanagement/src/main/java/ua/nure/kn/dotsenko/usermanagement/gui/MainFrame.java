@@ -26,6 +26,10 @@ public class MainFrame extends JFrame {
 		initialize();
 	}
 	
+	public UserDAO getDao() {
+		return dao;
+	}
+	
 	private void initialize() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
@@ -46,12 +50,13 @@ public class MainFrame extends JFrame {
 		if(browsePanel == null) {
 			browsePanel = new BrowsePanel(this);
 		} 
+		browsePanel.initTable();
 		return browsePanel;
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		MainFrame frame = new MainFrame();
+		frame.setVisible(true);
 	}
 
 	public void showAddPanel() {

@@ -25,7 +25,7 @@ public abstract class DaoFactory {
 	public static synchronized DaoFactory getInstance() {
 		if(instance == null) {
 			try {
-				Class<?> factoryClass = Class.forName(properties.getProperty(DAO_FACTORY));
+				Class factoryClass = Class.forName(properties.getProperty(DAO_FACTORY));
 				instance = (DaoFactory) factoryClass.newInstance();
 			} catch (Exception e) {
 				throw new RuntimeException(e);
