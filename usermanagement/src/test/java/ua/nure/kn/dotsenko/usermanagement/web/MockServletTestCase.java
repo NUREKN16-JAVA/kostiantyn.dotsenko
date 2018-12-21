@@ -39,10 +39,4 @@ public abstract class MockServletTestCase extends BasicServletTestCaseAdapter {
 		super.tearDown();
 		getMockUserDao().verify();
 	}
-
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
-
 }
