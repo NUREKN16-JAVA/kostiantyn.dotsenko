@@ -1,4 +1,4 @@
 Testsuite: ua.nure.kn.dotsenko.usermanagement.db.DaoFactoryTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0,007 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0,01 sec
 
-Testcase: testGetUserDAO took 0,006 sec
+Testcase: testGetUserDAO took 0,008 sec

@@ -1,0 +1,23 @@
+Testsuite: ua.nure.kn.dotsenko.usermanagement.gui.MainFrameTest
+Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0,427 sec
+
+Testcase: testAddUser took 0,274 sec
+	FAILED
+mockUserDAO: findAll() was expected but not called
+junit.framework.AssertionFailedError: mockUserDAO: findAll() was expected but not called
+	at com.mockobjects.dynamic.Mock.verify(Mock.java:107)
+	at ua.nure.kn.dotsenko.usermanagement.gui.MainFrameTest.tearDown(Unknown Source)
+	at junit.extensions.jfcunit.JFCTestCase$2.run(JFCTestCase.java:334)
+	at junit.extensions.jfcunit.JFCTestCase$3.run(JFCTestCase.java:478)
+	at java.base/java.lang.Thread.run(Thread.java:844)
+
+Testcase: testBrowseControls took 0,152 sec
+	FAILED
+mockUserDAO: findAll() was expected but not called
+junit.framework.AssertionFailedError: mockUserDAO: findAll() was expected but not called
+	at com.mockobjects.dynamic.Mock.verify(Mock.java:107)
+	at ua.nure.kn.dotsenko.usermanagement.gui.MainFrameTest.tearDown(Unknown Source)
+	at junit.extensions.jfcunit.JFCTestCase$2.run(JFCTestCase.java:334)
+	at junit.extensions.jfcunit.JFCTestCase$3.run(JFCTestCase.java:478)
+	at java.base/java.lang.Thread.run(Thread.java:844)
+
