@@ -1,4 +1,4 @@
-package ua.nure.kn.dotsenko.usermanagement.web;
+	package ua.nure.kn.dotsenko.usermanagement.web;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -28,5 +28,18 @@ public class BrowseServletTest extends MockServletTestCase {
 		assertNotNull("Could not find list of Users in session", collection);
 		assertSame(list, collection);
 	}
+	
+	@Test
+	public void testEdit() {
+		User user = new User(1000L, "John", "Doe", new Date());
+		getMockUserDao().expectAndReturn("find", new Long(1000), user);
+		addRequestParameter("editButton", "Edit");
+		addRequestParameter("id", "1000");
+		doPost();
+		User userinSession = (User) getWebMockObjectFactory().getMockSession().getAttribute("user");
+		assertNotNull("Could not find the user in session", user);
+		assertSame(user, userinSession);
+	}
+
 
 }

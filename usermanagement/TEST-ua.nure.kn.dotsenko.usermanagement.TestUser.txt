@@ -1,10 +1,10 @@
 Testsuite: ua.nure.kn.dotsenko.usermanagement.TestUser
-Tests run: 6, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0,024 sec
+Tests run: 6, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0,027 sec
 
-Testcase: testGetFullName took 0,011 sec
+Testcase: testGetFullName took 0,013 sec
 Testcase: testGetAge1 took 0 sec
 Testcase: testGetAge2 took 0 sec
-Testcase: testGetAge3 took 0,001 sec
+Testcase: testGetAge3 took 0,002 sec
 	FAILED
 expected:<18> but was:<19>
 junit.framework.AssertionFailedError: expected:<18> but was:<19>
@@ -18,5 +18,5 @@ junit.framework.AssertionFailedError: expected:<18> but was:<19>
 	at org.eclipse.ant.internal.launching.remote.InternalAntRunner.run(InternalAntRunner.java:460)
 	at org.eclipse.ant.internal.launching.remote.InternalAntRunner.main(InternalAntRunner.java:142)
 
-Testcase: testGetAge4 took 0 sec
+Testcase: testGetAge4 took 0,001 sec
 Testcase: testGetAge5 took 0 sec
