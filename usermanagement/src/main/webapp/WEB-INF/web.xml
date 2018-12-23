@@ -9,10 +9,30 @@
 		<servlet-name>Browse Servlet</servlet-name>
 		<servlet-class>ua.nure.kn.dotsenko.usermanagement.web.BrowseServlet</servlet-class>
 	</servlet>
+	
+	<servlet>
+		<servlet-name>Add Servlet</servlet-name>
+		<servlet-class>ua.nure.kn.dotsenko.usermanagement.web.AddServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>Edit Servlet</servlet-name>
+		<servlet-class>ua.nure.kn.dotsenko.usermanagement.web.EditServlet</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>Browse Servlet</servlet-name>
 		<url-pattern>/browse</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>Add Servlet</servlet-name>
+		<url-pattern>/add</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>Edit Servlet</servlet-name>
+		<url-pattern>/edit</url-pattern>
 	</servlet-mapping>
   
 </web-app>
