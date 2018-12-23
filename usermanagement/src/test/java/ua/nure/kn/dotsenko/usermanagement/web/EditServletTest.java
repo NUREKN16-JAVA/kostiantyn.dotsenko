@@ -41,5 +41,72 @@ public class EditServletTest extends MockServletTestCase {
 		addRequestParameter("okButton", "Ok");
 		doPost();
 	}
+	
+	@Test
+	public void testEditEmptyFirstName() {
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
+		
+		String dateFormatted = sdf.format(date);
+		
+		try {
+			date = sdf.parse(dateFormatted);
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+		
+		addRequestParameter("id", "1000");
+		addRequestParameter("lastName", "Doe");
+		addRequestParameter("date", DateFormat.getDateInstance().format(date));
+		addRequestParameter("okButton", "Ok");
+		doPost();
+		String errorMessage = (String) getWebMockObjectFactory().getMockRequest().getAttribute("error");
+		assertNotNull("Could not find error message", errorMessage);
+	}
+	
+	@Test
+	public void testEditEmptyLastName() {
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
+		
+		String dateFormatted = sdf.format(date);
+		
+		try {
+			date = sdf.parse(dateFormatted);
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+		
+		addRequestParameter("id", "1000");
+		addRequestParameter("firstName", "John");
+		addRequestParameter("date", DateFormat.getDateInstance().format(date));
+		addRequestParameter("okButton", "Ok");
+		doPost();
+		String errorMessage = (String) getWebMockObjectFactory().getMockRequest().getAttribute("error");
+		assertNotNull("Could not find error message", errorMessage);
+	}
+	
+	@Test
+	public void testEditEmptyDate() {
+		addRequestParameter("id", "1000");
+		addRequestParameter("firstName", "John");
+		addRequestParameter("lastName", "Doe");
+		addRequestParameter("okButton", "Ok");
+		doPost();
+		String errorMessage = (String) getWebMockObjectFactory().getMockRequest().getAttribute("error");
+		assertNotNull("Could not find error message", errorMessage);
+	}
+
+	@Test
+	public void testEditEmptyDateIncorrect() {
+		addRequestParameter("id", "1000");
+		addRequestParameter("firstName", "John");
+		addRequestParameter("lastName", "Doe");
+		addRequestParameter("date", "aksdjwqi");
+		addRequestParameter("okButton", "Ok");
+		doPost();
+		String errorMessage = (String) getWebMockObjectFactory().getMockRequest().getAttribute("error");
+		assertNotNull("Could not find error message", errorMessage);
+	}
 
 }

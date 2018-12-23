@@ -24,22 +24,28 @@ public class EditServlet extends HttpServlet {
 		} else if (req.getParameter("cancelButton") != null) {
 			doCancel(req, resp);
 		} else {
-			showPage();
+			showPage(req, resp);
 		}
 	}
 
-	private void showPage() {
-		// TODO Auto-generated method stub
-		
+	private void showPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.getRequestDispatcher("/edit.jsp").forward(req, resp);
 	}
 
-	private void doCancel(HttpServletRequest req, HttpServletResponse resp) {
-		// TODO Auto-generated method stub
-		
+	private void doCancel(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.getRequestDispatcher("/browse").forward(req, resp);
 	}
 
 	private void doOk(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		User user = getUser(req);
+		User user = null;
+		try {
+			user = getUser(req);
+		} catch (Exception e1) {
+			req.setAttribute("error", e1.getMessage());
+			showPage(req, resp);
+			return;
+		}
+		
 		try {
 			processUser(user);
 		} catch (DatabaseException e) {
@@ -54,12 +60,16 @@ public class EditServlet extends HttpServlet {
 		DaoFactory.getInstance().getUserDAO().update(user);
 	}
 
-	private User getUser(HttpServletRequest req) {
+	private User getUser(HttpServletRequest req) throws Exception {
 		User user = new User();
 		String idStr = req.getParameter("id");
 		String firstName = req.getParameter("firstName");
 		String lastName = req.getParameter("lastName");
 		String dateStr = req.getParameter("date");
+		
+		if(dateStr == null) {
+			throw new Exception("Date is empty");
+		}
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
 		Date date = new Date();
@@ -67,7 +77,15 @@ public class EditServlet extends HttpServlet {
 		try {
 			date = sdf.parse(dateStr);
 		} catch (ParseException e1) {
-			e1.printStackTrace();
+			throw new Exception("Date format is incorrect");
+		}
+		
+		if(firstName == null) {
+			throw new Exception("First name is empty");
+		}
+		
+		if(lastName == null) {
+			throw new Exception("Last name is empty");
 		}
 		
 		if(idStr != null) {
