@@ -1,0 +1,8 @@
+Testsuite: ua.nure.kn.dotsenko.usermanagement.web.AddServletTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0,077 sec
+
+Testcase: testAdd took 0,072 sec
+Testcase: testAddEmptyLastName took 0,001 sec
+Testcase: testAddEmptyDate took 0 sec
+Testcase: testAddEmptyDateIncorrect took 0,001 sec
+Testcase: testAddEmptyFirstName took 0,002 sec

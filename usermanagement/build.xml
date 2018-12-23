@@ -66,7 +66,7 @@
 				<include name="**/*.xml"/>
 			</fileset>
 		</copy>
-		<javac srcdir="${test-java-dir}" destdir="${build-dir}">
+		<javac srcdir="${test-java-dir}" destdir="${build-dir}" debug="true">
 			<classpath>
 				<fileset dir="${lib-dir}"/>
 			</classpath>
@@ -96,6 +96,8 @@
 		<!-- скопировать все либы -->
 		<copy todir="${war-lib-dir}">
 			<fileset dir="${lib-dir}">
+			    <exclude name="jsp-api.jar"/>
+			    <exclude name="servlet-api.jar"/>
 			</fileset>
 		</copy>
 		<!-- скопировать все конфиги -->

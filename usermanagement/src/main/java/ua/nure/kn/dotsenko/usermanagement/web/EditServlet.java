@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -71,7 +72,7 @@ public class EditServlet extends HttpServlet {
 			throw new Exception("Date is empty");
 		}
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH);
 		Date date = new Date();
 		
 		try {
