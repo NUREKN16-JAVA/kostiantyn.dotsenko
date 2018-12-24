@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import ua.nure.kn.dotsenko.usermanagement.User;
 import ua.nure.kn.dotsenko.usermanagement.db.DaoFactory;
 import ua.nure.kn.dotsenko.usermanagement.db.DatabaseException;
+import ua.nure.kn.dotsenko.usermanagement.db.UserDAO;
 
 public class BrowseServlet extends HttpServlet {
 	
@@ -51,9 +52,25 @@ public class BrowseServlet extends HttpServlet {
 		
 	}
 
-	private void delete(HttpServletRequest req, HttpServletResponse resp) {
-		// TODO Auto-generated method stub
-		
+	private void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String id = req.getParameter("id");
+		if (id == null || id.trim().length() == 0) {
+			req.setAttribute("error", "You must select a user");
+			req.getRequestDispatcher("/browse.jsp").forward(req, resp);
+			return;
+		}
+
+		try {
+			UserDAO userDao = DaoFactory.getInstance().getUserDAO();
+			User user = (User) userDao.find(new Long(id));
+			userDao.delete(user);
+			req.setAttribute("message", "Deleted user: " + user.toString());
+			resp.sendRedirect("./browse");
+		} catch (Exception e) {
+			req.setAttribute("error", e.toString());
+			req.getRequestDispatcher("/browse.jsp").forward(req, resp);
+			return;
+		}
 	}
 
 	private void edit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
