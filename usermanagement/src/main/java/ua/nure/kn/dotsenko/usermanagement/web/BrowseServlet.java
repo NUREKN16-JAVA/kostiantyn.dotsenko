@@ -30,8 +30,24 @@ public class BrowseServlet extends HttpServlet {
 		}	
 	}
 	
-	private void details(HttpServletRequest req, HttpServletResponse resp) {
-		// TODO Auto-generated method stub
+	private void details(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String idStr = req.getParameter("id");
+		if(idStr == null || idStr.trim().length() == 0) {
+			req.setAttribute("error", "You must select a user");
+			req.getRequestDispatcher("/browse.jsp").forward(req, resp);
+			return;
+		}
+		
+		try {
+			User user = DaoFactory.getInstance().getUserDAO().find(new Long(idStr));
+			req.getSession().setAttribute("user", user);
+		} catch(Exception e) {
+			req.setAttribute("error", "ERROR: " + e.toString());
+			req.getRequestDispatcher("/browse.jsp").forward(req, resp);
+			return;
+		}
+		
+		req.getRequestDispatcher("/details").forward(req, resp);
 		
 	}
 

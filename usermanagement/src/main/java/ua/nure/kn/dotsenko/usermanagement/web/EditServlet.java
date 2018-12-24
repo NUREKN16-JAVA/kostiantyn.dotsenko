@@ -37,7 +37,7 @@ public class EditServlet extends HttpServlet {
 		req.getRequestDispatcher("/browse").forward(req, resp);
 	}
 
-	private void doOk(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doOk(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		User user = null;
 		try {
 			user = getUser(req);

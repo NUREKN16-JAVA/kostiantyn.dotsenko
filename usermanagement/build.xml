@@ -42,7 +42,7 @@
 				<include name="**/*.xml"/>
 			</fileset>
 		</copy>
-		<javac srcdir="${main-java-dir}" destdir="${build-dir}">
+		<javac srcdir="${main-java-dir}" destdir="${build-dir}" debug="true">
 			<classpath>
 				<fileset dir="${lib-dir}"/>
 			</classpath>

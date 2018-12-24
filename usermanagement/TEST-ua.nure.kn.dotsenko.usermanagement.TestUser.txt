@@ -1,7 +1,7 @@
 Testsuite: ua.nure.kn.dotsenko.usermanagement.TestUser
-Tests run: 6, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0,026 sec
+Tests run: 6, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0,025 sec
 
-Testcase: testGetFullName took 0,013 sec
+Testcase: testGetFullName took 0,012 sec
 Testcase: testGetAge1 took 0 sec
 Testcase: testGetAge2 took 0 sec
 Testcase: testGetAge3 took 0,002 sec

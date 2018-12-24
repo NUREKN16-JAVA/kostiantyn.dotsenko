@@ -19,6 +19,11 @@
 		<servlet-name>Edit Servlet</servlet-name>
 		<servlet-class>ua.nure.kn.dotsenko.usermanagement.web.EditServlet</servlet-class>
 	</servlet>
+	
+	<servlet>
+		<servlet-name>Details Servlet</servlet-name>
+		<servlet-class>ua.nure.kn.dotsenko.usermanagement.web.DetailsServlet</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>Browse Servlet</servlet-name>
@@ -33,6 +38,11 @@
 	<servlet-mapping>
 		<servlet-name>Edit Servlet</servlet-name>
 		<url-pattern>/edit</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>Details Servlet</servlet-name>
+		<url-pattern>/details</url-pattern>
 	</servlet-mapping>
   
 </web-app>

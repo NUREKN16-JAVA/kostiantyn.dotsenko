@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -21,7 +22,7 @@ public class AddServletTest extends MockServletTestCase {
 	@Test
 	public void testAdd() {
 		Date date = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH);
 		
 		String dateFormatted = sdf.format(date);
 		
@@ -37,7 +38,7 @@ public class AddServletTest extends MockServletTestCase {
 		
 		addRequestParameter("firstName", "John");
 		addRequestParameter("lastName", "Doe");
-		addRequestParameter("date", DateFormat.getDateInstance().format(date));
+		addRequestParameter("date", dateFormatted);
 		addRequestParameter("okButton", "Ok");
 		doPost();
 	}

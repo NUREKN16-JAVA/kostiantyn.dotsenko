@@ -1,8 +1,19 @@
 Testsuite: ua.nure.kn.dotsenko.usermanagement.web.AddServletTest
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0,077 sec
+Tests run: 5, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0,123 sec
 
-Testcase: testAdd took 0,072 sec
+Testcase: testAdd took 0,118 sec
+	FAILED
+mockUserDAO: create(< = User [firstNAme=John, lastName=Doe, dateOfBirth=Mon Dec 24 00:00:00 EET 2018, id=null]>) was expected but not called
+junit.framework.AssertionFailedError: mockUserDAO: create(< = User [firstNAme=John, lastName=Doe, dateOfBirth=Mon Dec 24 00:00:00 EET 2018, id=null]>) was expected but not called
+	at com.mockobjects.dynamic.Mock.verify(Mock.java:107)
+	at ua.nure.kn.dotsenko.usermanagement.web.MockServletTestCase.tearDown(MockServletTestCase.java:40)
+	at jdk.internal.reflect.GeneratedMethodAccessor4.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at org.eclipse.ant.internal.launching.remote.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:36)
+	at org.eclipse.ant.internal.launching.remote.InternalAntRunner.run(InternalAntRunner.java:460)
+	at org.eclipse.ant.internal.launching.remote.InternalAntRunner.main(InternalAntRunner.java:142)
+
 Testcase: testAddEmptyLastName took 0,001 sec
 Testcase: testAddEmptyDate took 0 sec
 Testcase: testAddEmptyDateIncorrect took 0,001 sec
-Testcase: testAddEmptyFirstName took 0,002 sec
+Testcase: testAddEmptyFirstName took 0,001 sec

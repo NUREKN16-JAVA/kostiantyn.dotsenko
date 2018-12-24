@@ -1,8 +1,8 @@
 Testsuite: ua.nure.kn.dotsenko.usermanagement.web.EditServletTest
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0,061 sec
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0,058 sec
 
-Testcase: testEdit took 0,058 sec
+Testcase: testEdit took 0,055 sec
 Testcase: testEditEmptyLastName took 0,001 sec
-Testcase: testEditEmptyDateIncorrect took 0,001 sec
+Testcase: testEditEmptyDateIncorrect took 0 sec
 Testcase: testEditEmptyFirstName took 0,001 sec
-Testcase: testEditEmptyDate took 0 sec
+Testcase: testEditEmptyDate took 0,001 sec
