@@ -19,6 +19,7 @@ class HsqldbUserDao implements UserDAO {
 	private static final String SELECT_USER_QUERY = "SELECT * FROM users WHERE id = ?";
 	private static final String UPDATE_QUERY = "UPDATE users SET firstname = ?, lastname = ?, dateofbirth = ? WHERE id = ?";
 	private static final String DELETE_QUERY = "DELETE FROM users WHERE id = ?";
+	private static final String SELECT_USER_BY_NAMES = "SELECT * FROM users WHERE firstName = ? AND lastName = ?";
 	private ConnectionFactory connectionFactory;
 	
 	public ConnectionFactory getConnectionFactory() {
@@ -147,6 +148,33 @@ class HsqldbUserDao implements UserDAO {
 				user.setDateOfBirth(resultSet.getDate(4));
 				result.add(user);
 				statement.close();
+				connection.close();
+			}
+		} catch (SQLException e) {
+			throw new DatabaseException(e);
+		}
+		
+		return result;
+	}
+
+	@Override
+	public Collection<User> find(String firstName, String lastName) throws DatabaseException {
+    Collection<User> result = new LinkedList<User>(); 
+		
+		try {
+			Connection connection = connectionFactory.createConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_NAMES);
+			preparedStatement.setString(1, firstName);
+			preparedStatement.setString(2, lastName);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				User user = new User();
+				user.setId(new Long(resultSet.getLong(1)));
+				user.setFirstName(resultSet.getString(2));
+				user.setLastName(resultSet.getString(3));
+				user.setDateOfBirth(resultSet.getDate(4));
+				result.add(user);
+				preparedStatement.close();
 				connection.close();
 			}
 		} catch (SQLException e) {

@@ -1,12 +1,10 @@
 Testsuite: ua.nure.kn.dotsenko.usermanagement.web.MockServletTestCase
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0,001 sec
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0 sec
 
 Testcase: warning took 0 sec
 	FAILED
 No tests found in ua.nure.kn.dotsenko.usermanagement.web.MockServletTestCase
 junit.framework.AssertionFailedError: No tests found in ua.nure.kn.dotsenko.usermanagement.web.MockServletTestCase
-	at jdk.internal.reflect.GeneratedMethodAccessor4.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at org.eclipse.ant.internal.launching.remote.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:36)
 	at org.eclipse.ant.internal.launching.remote.InternalAntRunner.run(InternalAntRunner.java:460)
 	at org.eclipse.ant.internal.launching.remote.InternalAntRunner.main(InternalAntRunner.java:142)

@@ -19,6 +19,8 @@ public interface UserDAO {
 		
 	Collection<User> findAll() throws DatabaseException;
 	
+	Collection<User> find(String firstName, String lastName) throws DatabaseException;
+	
     void update(final User user) throws DatabaseException; 
     
     void delete(final User user) throws DatabaseException;

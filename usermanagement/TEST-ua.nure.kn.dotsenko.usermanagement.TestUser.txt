@@ -1,22 +1,17 @@
 Testsuite: ua.nure.kn.dotsenko.usermanagement.TestUser
-Tests run: 6, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0,037 sec
+Tests run: 6, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0,015 sec
 
-Testcase: testGetFullName took 0,016 sec
-Testcase: testGetAge1 took 0,001 sec
+Testcase: testGetFullName took 0 sec
+Testcase: testGetAge1 took 0 sec
 Testcase: testGetAge2 took 0 sec
-Testcase: testGetAge3 took 0,003 sec
+Testcase: testGetAge3 took 0 sec
 	FAILED
 expected:<18> but was:<19>
 junit.framework.AssertionFailedError: expected:<18> but was:<19>
 	at ua.nure.kn.dotsenko.usermanagement.TestUser.testGetAge3(TestUser.java:69)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at jdk.internal.reflect.GeneratedMethodAccessor4.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at org.eclipse.ant.internal.launching.remote.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:36)
 	at org.eclipse.ant.internal.launching.remote.InternalAntRunner.run(InternalAntRunner.java:460)
 	at org.eclipse.ant.internal.launching.remote.InternalAntRunner.main(InternalAntRunner.java:142)
 
-Testcase: testGetAge4 took 0,001 sec
+Testcase: testGetAge4 took 0 sec
 Testcase: testGetAge5 took 0 sec
