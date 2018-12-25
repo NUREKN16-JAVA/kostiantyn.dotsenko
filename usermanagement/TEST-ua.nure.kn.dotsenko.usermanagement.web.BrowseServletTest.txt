@@ -1,5 +1,10 @@
 Testsuite: ua.nure.kn.dotsenko.usermanagement.web.BrowseServletTest
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0,14 sec
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0,123 sec
 
-Testcase: testEdit took 0,138 sec
-Testcase: testBrowse took 0,001 sec
+Testcase: testDetailsWithNoOneSelected took 0,094 sec
+Testcase: testDeleteWithNoOneSelected took 0 sec
+Testcase: testEdit took 0,008 sec
+Testcase: testEditWithNoOneSelected took 0 sec
+Testcase: testDetails took 0,001 sec
+Testcase: testBrowse took 0 sec
+Testcase: testDelete took 0,02 sec

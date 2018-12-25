@@ -36,10 +36,54 @@ public class BrowseServletTest extends MockServletTestCase {
 		addRequestParameter("editButton", "Edit");
 		addRequestParameter("id", "1000");
 		doPost();
-		User userinSession = (User) getWebMockObjectFactory().getMockSession().getAttribute("user");
-		assertNotNull("Could not find the user in session", user);
-		assertSame(user, userinSession);
+		User userInSession = (User) getWebMockObjectFactory().getMockSession().getAttribute("user");
+		assertNotNull("Could not find the user in session", userInSession);
+		assertSame(user, userInSession);
 	}
 
+    @Test
+    public void testEditWithNoOneSelected() {
+        addRequestParameter("editButton", "Edit");
+        doPost();
+        assertNotNull(getWebMockObjectFactory().getMockRequest().getAttribute("error"));
+    }
+    
+    @Test
+    public void testDelete() {
+        User user = new User(1000L, "Gabe", "Newell", new Date());
+        getMockUserDao().expectAndReturn("find", new Long(1000), user);
+        getMockUserDao().expect("delete", user);
+        getMockUserDao().expect("findAll");
+        addRequestParameter("deleteButton", "Delete");
+        addRequestParameter("id", "1000");
+        doPost();
+        assertNotNull(getWebMockObjectFactory().getMockRequest().getAttribute("message"));
+    }
+    
+    @Test
+    public void testDeleteWithNoOneSelected() {
+        addRequestParameter("deleteButton", "Delete");
+        doPost();
+        assertNotNull(getWebMockObjectFactory().getMockRequest().getAttribute("error"));
+    }
+    
+    @Test
+    public void testDetails() {
+		User user = new User(1000L, "Alexander", "Veselov", new Date());
+		getMockUserDao().expectAndReturn("find", 1000L, user);
+		addRequestParameter("detailsButton", "Details");
+		addRequestParameter("id", "1000");
+		doPost();
+		User userInSession = (User) getWebMockObjectFactory().getMockSession().getAttribute("user");
+		assertNotNull("Could not find the user in session", userInSession);
+		assertSame(user, userInSession);
+    }
+    
+    @Test
+    public void testDetailsWithNoOneSelected() {
+        addRequestParameter("detailsButton", "Details");
+        doPost();
+        assertNotNull(getWebMockObjectFactory().getMockRequest().getAttribute("error"));
+    }
 
 }

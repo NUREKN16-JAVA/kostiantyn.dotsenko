@@ -49,7 +49,6 @@ public class BrowseServlet extends HttpServlet {
 		}
 		
 		req.getRequestDispatcher("/details").forward(req, resp);
-		
 	}
 
 	private void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -62,10 +61,10 @@ public class BrowseServlet extends HttpServlet {
 
 		try {
 			UserDAO userDao = DaoFactory.getInstance().getUserDAO();
-			User user = (User) userDao.find(new Long(id));
+			User user = userDao.find(new Long(id));
 			userDao.delete(user);
-			req.setAttribute("message", "Deleted user: " + user.toString());
-			resp.sendRedirect("./browse");
+			req.setAttribute("message", user.getFullName() + " was successfully deleted");
+			browse(req, resp);
 		} catch (Exception e) {
 			req.setAttribute("error", e.toString());
 			req.getRequestDispatcher("/browse.jsp").forward(req, resp);

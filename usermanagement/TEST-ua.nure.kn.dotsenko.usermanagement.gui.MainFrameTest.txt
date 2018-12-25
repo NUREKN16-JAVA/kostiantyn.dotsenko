@@ -1,7 +1,7 @@
 Testsuite: ua.nure.kn.dotsenko.usermanagement.gui.MainFrameTest
-Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0,431 sec
+Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0,466 sec
 
-Testcase: testAddUser took 0,276 sec
+Testcase: testAddUser took 0,311 sec
 	FAILED
 mockUserDAO: findAll() was expected but not called
 junit.framework.AssertionFailedError: mockUserDAO: findAll() was expected but not called
