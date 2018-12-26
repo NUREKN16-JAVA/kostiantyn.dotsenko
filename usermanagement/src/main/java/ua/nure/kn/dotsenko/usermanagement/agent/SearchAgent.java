@@ -22,9 +22,9 @@ public class SearchAgent extends Agent {
 	protected void setup() {
 		super.setup();
 		System.out.println(getAID().getName() + " started.");
-		
-	    gui = new SearchGui(this);
-	    gui.setVisible(true);
+
+		gui = new SearchGui(this);
+		gui.setVisible(true);
 
 		DFAgentDescription description = new DFAgentDescription();
 		description.setName(getAID());
@@ -91,7 +91,7 @@ public class SearchAgent extends Agent {
 	}
 
 	void showUsers(Collection<User> users) {
-	  gui.addUsers(users);
+		gui.addUsers(users);
 	}
 
 }
